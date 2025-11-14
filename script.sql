@@ -23,25 +23,25 @@ CREATE TABLE attente_livraisons(
     FOREIGN KEY (commande_id) REFERENCES commandes(id)
 );
 
-CREATE TABLE pizzas(
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nom VARCHAR(50),
-    commande_id INT,
-    FOREIGN KEY (commande_id) REFERENCES commandes(id)
-);
-
 CREATE TABLE croutes(
 	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nom_croute VARCHAR(50),
-    pizza_id INT,
-    FOREIGN KEY (pizza_id) REFERENCES pizzas(id)
+    nom_croute VARCHAR(50)
 );
 
 CREATE TABLE sauces(
 	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nom_sauce VARCHAR(50),
-    pizza_id INT,
-    FOREIGN KEY (pizza_id) REFERENCES pizzas(id)
+    nom_sauce VARCHAR(50)
+);
+
+CREATE TABLE pizzas(
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nom VARCHAR(50),
+    commande_id INT,
+    croute_id INT,
+    sauce_id INT,
+    FOREIGN KEY (commande_id) REFERENCES commandes(id),
+    FOREIGN KEY (croute_id) REFERENCES croutes(id),
+    FOREIGN KEY (sauce_id) REFERENCES sauces(id)
 );
 
 CREATE TABLE garnitures(
@@ -57,4 +57,19 @@ CREATE TABLE pizzas_garnitures(
     FOREIGN KEY(garniture_id) REFERENCES garnitures(id)
 );
     
-    
+# ***************************** INSERTIONS ***************************** #
+
+INSERT INTO clients (nom, num_telephone, adresse_livraison)
+VALUES
+('Christine', '819-300-3941', '3-11 rue Bissonnette Warwick');
+
+INSERT INTO commandes (date_commande, date_livraison, client_id)
+VALUES 
+('2025-11-7', '2025-11-8', 1);
+
+INSERT INTO attente_livraisons(commande_id)
+VALUES
+(1);
+
+INSERT INTO croutes (nom_croute)
+
