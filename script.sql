@@ -58,7 +58,8 @@ CREATE TABLE pizzas_garnitures(
 );
     
 # ***************************** INSERTIONS ***************************** #
-
+# J'ai fais plus d'insert que la normale,
+#  pour vérifier si tous mes inserts fonctionne correctement.
 INSERT INTO clients (nom, num_telephone, adresse_livraison)
 VALUES
 ('Christine', '819-300-3941', '3-11 rue Bissonnette Warwick');
@@ -71,5 +72,36 @@ INSERT INTO attente_livraisons(commande_id)
 VALUES
 (1);
 
-INSERT INTO croutes (nom_croute)
+INSERT INTO pizzas(nom, commande_id, croute_id, sauce_id)
+VALUES
+('Pizza pepperoni', 1, 2,3);
 
+INSERT INTO pizzas_garnitures(pizza_id, garniture_id)
+VALUES
+(1,2);
+
+INSERT INTO croutes (nom_croute)
+VALUES
+('Classique'),
+('Mince'),
+('Épaisse');
+
+INSERT INTO sauces (nom_sauce)
+VALUES
+('Tomate'),
+('Spaghetti'),
+('Alfredo');
+
+INSERT INTO garnitures(nom_garniture)
+VALUES
+('Pepperoni'),
+('Champignons'),
+('Oignons'),
+('Poivrons'),
+('Olives'),
+('Anchois'),
+('Bacon'),
+('Poulet'),
+('Maïs'),
+('Fromage'),
+('Piments forts');
